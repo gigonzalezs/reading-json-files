@@ -17,7 +17,8 @@ const writeFile = async (filePath: string, data: string) => {
 
 const CHAPTERS_TO_PRINT = [
   {
-    bookUrl: 'https://mrk214.github.io/snapshots/en___eng___eng/NLT.json',
+    bookUrl:
+      'https://mrk214.github.io/snapshots/en___eng___eng/NLT_vid_116.json',
     chapterUsfm: 'PSA.3',
     separatedLines: true,
     notice: [
@@ -27,7 +28,8 @@ const CHAPTERS_TO_PRINT = [
     ],
   },
   {
-    bookUrl: 'https://mrk214.github.io/snapshots/en___eng___eng/NLT.json',
+    bookUrl:
+      'https://mrk214.github.io/snapshots/en___eng___eng/NLT_vid_116.json',
     chapterUsfm: 'SNG.1',
     separatedLines: true,
     notice: [
@@ -37,7 +39,8 @@ const CHAPTERS_TO_PRINT = [
     ],
   },
   {
-    bookUrl: 'https://mrk214.github.io/snapshots/en___eng___eng/NLT.json',
+    bookUrl:
+      'https://mrk214.github.io/snapshots/en___eng___eng/NLT_vid_116.json',
     chapterUsfm: 'REV.22',
     separatedLines: true,
     notice: [
@@ -51,7 +54,8 @@ const CHAPTERS_TO_PRINT = [
     ],
   },
   {
-    bookUrl: 'https://mrk214.github.io/snapshots/es___spa___spa/TLA.json',
+    bookUrl:
+      'https://mrk214.github.io/snapshots/es___spa___spa/TLA_vid_176.json',
     chapterUsfm: '1CH.1',
     separatedLines: false,
     notice: [
