@@ -137,3 +137,6 @@ dist
 
 # custom
 .DS_Store
+
+/content/
+package-lock.json
