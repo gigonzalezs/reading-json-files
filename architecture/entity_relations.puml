@@ -1,0 +1,92 @@
+@startuml
+hide circle
+skinparam linetype ortho
+
+entity Version {
+  * version_id : number
+  --
+  local_abbreviation : string
+  local_title : string
+  repository : string
+}
+
+entity Language {
+  iso_639_1 : string
+  iso_639_3 : string
+  language_tag : string
+  local_name : string
+  text_direction : string
+}
+
+entity Publisher {
+  name : string
+}
+
+entity Copyright {
+  html : string
+  text : string
+}
+
+entity Book {
+  * book_usfm : string
+  --
+  name : string
+}
+
+entity Chapter {
+  * chapter_usfm : string
+  --
+  is_chapter : boolean
+  chapter_html : string <<optional>>
+}
+
+entity Current {
+  usfm : string
+  human : string
+}
+
+entity NextPrev {
+  usfm : string
+  human : string
+  canonical : boolean
+  toc : boolean
+}
+
+entity ChapterItem {
+  type : ChapterItemType
+  verse_numbers : number[]
+  lines : string[]
+}
+
+enum ChapterItemType {
+  section1
+  section2
+  heading1
+  heading2
+  label
+  verse
+}
+
+entity RedLetterWordsSection {
+  text : string
+  rl : boolean
+}
+
+Version ||--|| Language : language
+Version ||--|| Publisher : publisher
+Version ||--|| Copyright : copyright
+Version ||--o{ Book : books
+
+Book ||--o{ Chapter : chapters
+
+Chapter }o--|| NextPrev : previous
+Chapter ||--|| Current : current
+Chapter }o--|| NextPrev : next
+Chapter ||--o{ ChapterItem : items
+
+ChapterItem }o--|| ChapterItemType : type
+ChapterItem ||--o{ RedLetterWordsSection : rlw_lines[][]
+
+NextPrev --|> Current : extends
+
+@enduml
