@@ -10,7 +10,7 @@ import { Chapter, ChunkedManifest, ResolvedChapter } from '@/types'
 
 const DEFAULT_CHUNK_SIZE = 4096
 
-const getManifestSource = (source: string): string => {
+export const getManifestSource = (source: string): string => {
   if (source.endsWith('manifest.json')) {
     return source
   }
