@@ -3,7 +3,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "types": "tsc",
-    "start": "tsx ./src/index.ts"
+    "start": "tsx ./src/index.ts",
+    "chunk": "tsx ./src/tools/chunk-version.ts"
   },
   "dependencies": {
     "ramda": "0.32.0",
