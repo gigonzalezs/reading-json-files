@@ -5,7 +5,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { isNonEmptyArray } from 'ramda-adjunct'
 
-import { Version } from '@/types'
+import { loadChapter } from '@/sources/chapter-source'
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 const README_PATH = path.join(__dirname, '..', 'README.md')
@@ -81,19 +81,7 @@ const main = async (): Promise<void> => {
   for (const ctp of CHAPTERS_TO_PRINT) {
     const { bookUrl, chapterUsfm, separatedLines, notice } = ctp
 
-    const response = await fetch(bookUrl)
-    const version: Version = await response.json()
-
-    const bookUsfm = chapterUsfm.split('.')[0]
-    const book = version.books.find((b) => b.book_usfm === bookUsfm)
-
-    const chapter = book!.chapters.find((c) => c.chapter_usfm === chapterUsfm)
-
-    if (!chapter) {
-      throw new Error(
-        `Chapter '${chapterUsfm}' not found in '${book!.book_usfm}'`,
-      )
-    }
+    const { version, chapter } = await loadChapter(bookUrl, chapterUsfm)
 
     markdown += '---\n\n'
     markdown += '> [!IMPORTANT]\n'

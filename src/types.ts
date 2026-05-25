@@ -9,6 +9,41 @@ export type Version = {
   books: Book[]
 }
 
+export type VersionSummary = Omit<Version, 'books'>
+
+export type ResolvedChapter = {
+  version: VersionSummary
+  chapter: Chapter
+}
+
+export type ChunkedManifest = {
+  format: 'book-ndjson-v1'
+  source: {
+    version_id: number
+    local_abbreviation: string
+    local_title: string
+    repository: string
+  }
+  language: Language
+  publisher: Publisher
+  copyright: Copyright
+  booksPath: string
+  books: ChunkedManifestBook[]
+}
+
+export type ChunkedManifestBook = {
+  book_usfm: string
+  name: string
+  file: string
+  chapters: ChunkedManifestChapter[]
+}
+
+export type ChunkedManifestChapter = {
+  chapter_usfm: string
+  o: number
+  l: number
+}
+
 export type Book = {
   book_usfm: string
   name: string
